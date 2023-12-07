@@ -1,0 +1,42 @@
+﻿@using GIHUN_MVC_Project.ViewModels.Hotels
+@model HotelsInfoViewModel
+
+
+
+<div id="hotelImageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" style="width:400px;height:400px;">
+
+    <div class="carousel-inner">
+       
+        <div class="carousel-item active">
+            <img src="@Model.photo1" class="d-block w-100" >
+        </div>
+
+        <div class="carousel-item">
+            <img src="@Model.photo2" class="d-block w-100" alt="...">
+        </div>
+
+        <div class="carousel-item">
+            <img src="@Model.photo3" class="d-block w-100" alt="...">
+        </div>
+
+        <div class="carousel-item">
+            <img src="@Model.photo4" class="d-block w-100" alt="...">
+        </div>
+
+        <div class="carousel-item">
+            <img src="@Model.photo5" class="d-block w-100" alt="...">
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#hotelImageCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#hotelImageCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</div>

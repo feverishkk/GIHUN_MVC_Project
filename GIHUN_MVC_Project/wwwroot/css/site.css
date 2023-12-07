@@ -1,0 +1,54 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.container2 {
+    background-color: cyan;
+    height: 1000px;
+}
+
+.sticky-element {
+    position: sticky;
+    top: 20px;
+    width: max-content;
+    margin-left: auto;
+}
+
+.drk:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+.carousel-caption {
+    z-index: 2;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}

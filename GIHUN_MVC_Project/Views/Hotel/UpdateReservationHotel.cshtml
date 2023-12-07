@@ -1,0 +1,133 @@
+﻿@using GIHUN_MVC_Project.ViewModels.Hotels
+@model UpdateReservationHotelViewModel
+
+@{
+    var partialViewModel = ViewData["hotelInfoViewModel"] as HotelsInfoViewModel;
+}
+
+<h1> 호텔 예약한 고객정보 수정  </h1>
+<hr />
+<form asp-action="UpdateReservationHotel" asp-controller="Hotel" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="d-flex ">
+
+        <div class="col-sm-7">
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Last_Name" class="control-label"></label>
+                <input asp-for="@Model.Last_Name" class="form-control" required />
+                <span asp-validation-for="@Model.Last_Name"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Last_Name)" value="Last_Name" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.First_Name" class="control-label"></label>
+                <input asp-for="@Model.First_Name" class="form-control" required />
+                <span asp-validation-for="@Model.First_Name"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.First_Name)" value="First_Name" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Hotel_Name" class="control-label"></label>
+                <input asp-for="@Model.Hotel_Name" class="form-control" disabled />
+                <label asp-for="@Model.City" class="control-label"></label>
+                <input asp-for="@Model.City" class="form-control" disabled />
+                <label asp-for="@Model.Addressline1" class="control-label"></label>
+                <input asp-for="@Model.Addressline1" class="form-control" disabled />
+                <label asp-for="@Model.Zipcode" class="control-label"></label>
+                <input asp-for="@Model.Zipcode" class="form-control" disabled />
+                <label asp-for="@Model.Hotel_Service_Rating" class="control-label"></label>
+                <input asp-for="@Model.Hotel_Service_Rating" class="form-control" disabled />
+                <label asp-for="@Model.Hotel_Location_Rating" class="control-label"></label>
+                <input asp-for="@Model.Hotel_Location_Rating" class="form-control" disabled />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Email" class="control-label"></label>
+                <input asp-for="@Model.Email" class="form-control" required />
+                <span asp-validation-for="@Model.Email"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Email)" value="@Model.Email" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Mobile" class="control-label"></label>
+                <input asp-for="@Model.Mobile" class="form-control" required />
+                <span asp-validation-for="@Model.Mobile"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Mobile)" value="Mobile" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Adults" class="control-label"></label>
+                <input asp-for="@Model.Adults" class="form-control" required />
+                <span asp-validation-for="@Model.Adults"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Adults)" value="@Model.Adults" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Children" class="control-label"></label>
+                <input asp-for="@Model.Children" class="form-control" required />
+                <span asp-validation-for="@Model.Children"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Children)" value="@Model.Children" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Infants" class="control-label"></label>
+                <input asp-for="@Model.Infants" class="form-control" required />
+                <span asp-validation-for="@Model.Infants"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Infants)" value="@Model.Infants" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Pets" class="control-label"></label>
+                <input asp-for="@Model.Pets" class="form-control" required />
+                <span asp-validation-for="@Model.Pets"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Pets)" value="@Model.Pets" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.StayDays" class="control-label"></label>
+                <input asp-for="@Model.StayDays" class="form-control" required />
+                <span asp-validation-for="@Model.StayDays"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.StayDays)" value="@Model.StayDays" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Check_In" class="control-label"></label>
+                <input asp-for="@Model.Check_In" class="form-control" required />
+                <span asp-validation-for="@Model.Check_In"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Check_In)" value="@Model.Check_In" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="@Model.Check_Out" class="control-label"></label>
+                <input asp-for="@Model.Check_Out" class="form-control" required />
+                <span asp-validation-for="@Model.Check_Out"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.Check_Out)" value="@Model.Check_Out" />
+            </div>
+
+            @Html.HiddenFor(x=>x.Booking_Id, Model.Booking_Id)
+
+            @{
+                int total = (int)Model.Paid_Total * 2;
+            }
+
+            <p>총 가격: </p>
+            <p style="font-weight:700; font-size:large"> $@total </p>
+            <input type="hidden" name="@Html.NameFor(x=>Model.Paid_Total)" value="@total" />
+
+            <div class="form-group">
+                <button type="submit" asp-action="UpdateReservationHotel" asp-controller="Hotel" class="btn btn-primary mt-2">확인</button>
+            </div>
+
+        </div>
+
+        <!--호텔 정보 -->
+        <div class="justify-content-center">
+            @Html.Partial("~/Views/PartialViews/_HotelInfoPartialView.cshtml", partialViewModel)
+        </div>
+    </div>
+
+</form>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>

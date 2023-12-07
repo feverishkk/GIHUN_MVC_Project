@@ -1,0 +1,112 @@
+﻿@using GIHUN_MVC_Project.ViewModels.Hotels
+@using Shared.Pagination
+@model IEnumerable<HotelsInfoViewModel>
+
+@{
+    ViewData["Title"] = "GetAllHotels";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string userEmail = ViewData["email"] as string;
+
+    Pager pager = new Pager();
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+
+}
+
+<h1>GetAllHotels</h1>
+
+<div>
+    <h4>HotelsInfoViewModel</h4>
+    <hr />
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <div class="img-fluid rounded-start">
+                            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="@item.photo1" class="d-block w-100">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="@item.photo2" class="d-block w-100">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="@item.photo3" class="d-block w-100">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="@item.photo4" class="d-block w-100">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="@item.photo5" class="d-block w-100">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                                <div class="m-4">
+                                    <strong>즐겨찾기</strong>
+                                    <form asp-action="AddLikeHotels" asp-controller="Hotel" asp-route-hotelId="@item.hotel_id">
+                                        <button>
+                                            <i class="fa fa-heart rating-color">  </i>
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+
+                                <a asp-action="HotelDetails" asp-controller="Hotel" asp-route-hotelId="@item.hotel_id">
+                                    @item.country - @item.hotel_name
+                                </a>
+
+                            </h5>
+                            <p class="card-text">
+
+                            </p>
+                            @{
+                                var stars = item.star_rating;
+                            }
+                            <p class="card-text">
+                                @item.overview.Substring(0, 130) ... <br />
+                                <small class="text-muted">
+
+                                    @for (double i = 0; i < stars; i++)
+                                    {
+                                        <i class="fa fa-star rating-color"></i>
+                                    }
+                                    <p>Service Rating : <strong> @item.rating_average </strong>  / 5</p>
+                                </small>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>
+
+@Html.Partial("~/Views/PartialViews/_PagerPartialView.cshtml", pager)

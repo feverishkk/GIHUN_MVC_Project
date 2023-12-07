@@ -1,0 +1,111 @@
+﻿@using GIHUN_MVC_Project.Models.Hotels
+@using GIHUN_MVC_Project.ViewModels.Hotels
+@using Shared.Pagination
+@model IEnumerable<GIHUN_MVC_Project.ViewModels.Hotels.HotelsInfoViewModel>
+
+@{
+    ViewData["Title"] = "SearchResult";
+    Pager pager = new Pager();
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+
+<h1>SearchResult</h1>
+
+<div>
+    <h4> Hotels Info</h4>
+    <hr />
+    @foreach (var item in Model)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.hotel_name) : @Html.DisplayFor(model => item.hotel_name)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.chain_name) : @Html.DisplayFor(model => item.chain_name)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.brand_name) : @Html.DisplayFor(model => item.brand_name)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.country) : @Html.DisplayFor(model => item.country)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.state) : @Html.DisplayFor(model => item.state)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.city) : @Html.DisplayFor(model => item.city)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.addressline1) : @Html.DisplayFor(model => item.addressline1)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.addressline2) : @Html.DisplayFor(model => item.addressline2)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.zipcode) : @Html.DisplayFor(model => item.zipcode)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.numberfloors) : @Html.DisplayFor(model => item.numberfloors)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.numberrooms) : @Html.DisplayFor(model => item.numberrooms)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.number_of_reviews) : @Html.DisplayFor(model => item.number_of_reviews)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.yearopened) : @Html.DisplayFor(model => item.yearopened)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.yearrenovated) : @Html.DisplayFor(model => item.yearrenovated)
+            </dt>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.rating_average) : @Html.DisplayFor(model => item.rating_average)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.star_rating) : @Html.DisplayFor(model => item.star_rating)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.rates_currency) : @Html.DisplayFor(model => item.rates_currency)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => item.rates_currency) : @Html.DisplayFor(model => item.rates_currency)
+            </dt>
+
+            <div class="row" >
+                <h5>Photos</h5>
+                <dl class="row">
+                    <dt class="col-sm-3">
+                        <img src="@item.photo1" />
+                    </dt>
+                    <dt class="col-sm-3">
+                        <img src="@item.photo2" />
+                    </dt>
+                    <dt class="col-sm-3">
+                        <img src="@item.photo3" />
+                    </dt>
+                    <dt class="col-sm-3">
+                        <img src="@item.photo4" />
+                    </dt>
+                </dl>
+            </div>
+
+            <a class="btn btn-primary" data-toggle="ajax-modal" data-target="#personModal" 
+                asp-action="CreateReservationHotel" asp-controller="Hotel"asp-route-hotelId="@item.hotel_id" >
+                Let's Booking!
+            </a>
+
+            &nbsp;
+            <hr />
+
+        </dl>
+    }
+</div>
+<a asp-action="Index" asp-controller="Home">Back to List</a>

@@ -1,0 +1,48 @@
+﻿@using GIHUN_MVC_Project.ViewModels.Hotels
+@model List<UserReservationHotelsInfo>
+
+@{
+    ViewData["Title"] = "GetUserReservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetUserReservation</h1>
+
+<div>
+    <h4>UserReservationHotelsInfo</h4>
+    <hr />
+
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Hotel.Hotel_Name</h5>
+                            <p class="card-text">
+                                성인     : <strong> @item.ReservationHotel.Adults 명   </strong> <br />
+                                아이(들) : <strong> @item.ReservationHotel.Children 명 </strong> <br />
+                                아기(들) : <strong> @item.ReservationHotel.Infants 명  </strong> <br />
+                                동반 동물: <strong> @item.ReservationHotel.Pets        </strong> <br />
+                                체크인   : <strong> @item.ReservationHotel.Check_In    </strong> <br />
+                                체크아웃 : <strong> @item.ReservationHotel.Check_Out   </strong> <br />
+                            </p>
+                            <p class="card-text">
+                                나라 : <strong> @item.Hotel.Hotel_Country  </strong> <br />
+                                도시 : <strong> @item.Hotel.Hotel_Location </strong> <br />
+                            </p>
+                            <p class="card-text"><small class="text-muted">@item.Hotel.Hotel_Address - @item.Hotel.Hotel_PostCode</small></p>
+                        </div>
+                    </div>
+                </div>
+
+                @Html.ActionLink("예약 수정하기", "UpdateReservationHotel", new { bookingId = item.ReservationHotel.Booking_Id }, new { @class = "btn btn-primary" })
+            </div>
+            <br />
+        </div>
+    }
+</div>
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>

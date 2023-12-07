@@ -1,0 +1,63 @@
+﻿@using GIHUN_MVC_Project.ViewModels.Hotels
+@model HotelsInfoViewModel
+
+@{
+    var stars = Model.star_rating;
+}
+
+<div >
+    <div class="justify-content-sm-start">
+        <!--호텔 사진 -->
+        @Html.Partial("~/Views/PartialViews/_HotelReservationPageImagePartialView.cshtml", Model)
+
+        <p>@Model.hotel_name</p>
+        @Html.HiddenFor(x=>x.hotel_name)
+
+        @if (Model.rating_average >= 9)
+        {
+            <span>@Model.rating_average 점 - 매우 훌륭함</span>
+        }
+        else if (Model.rating_average >= 8)
+        {
+            <span>@Model.rating_average 점 - 훌륭함</span>
+        }
+        else if (Model.rating_average >= 7)
+        {
+            <span>@Model.rating_average 점 - 매우 좋음</span>
+        }
+        else if (Model.rating_average >= 6)
+        {
+            <span>@Model.rating_average 점 - 좋음</span>
+        }
+        else if (Model.rating_average >= 5)
+        {
+            <span>@Model.rating_average 점 - 괜찮음</span>
+        }
+        else if (Model.rating_average >= 4)
+        {
+            <span> @Model.rating_average 점 - 다른 곳 추천</span>
+        }
+
+        <p>Hotels.com의 @Model.number_of_reviews 개 이용 후기</p>
+
+        @for (double i = 0; i < stars; i++)
+        {
+            <i class="fa fa-star rating-color"></i>
+        }
+
+        <p>Service Rating : <strong> @Model.star_rating </strong>  / 5</p>
+        @Html.HiddenFor(x => Model.star_rating)
+
+        <p>체크인 시간 :  @Model.checkin</p>
+
+        <p>체크아웃 시간 : @Model.checkout</p>
+
+        @{
+            var total = Model.hotel_id * 482;
+        }
+        <p>총 가격: </p> 
+        <p style="font-weight:700; font-size:large"> $@total </p>
+        <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.Paid.Paid_Total)" value="@total" />
+
+    </div>
+</div>

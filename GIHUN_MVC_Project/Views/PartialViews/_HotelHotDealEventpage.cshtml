@@ -1,0 +1,100 @@
+﻿@using GIHUN_MVC_Project.ViewModels.Hotels
+
+@{
+    //var item1 = ViewData["item1"];
+    var item1 = ViewBag.item1 as HotelsInfoViewModel;
+    var item2 = ViewBag.item2 as HotelsInfoViewModel;
+    var item3 = ViewBag.item3 as HotelsInfoViewModel;
+    var item4 = ViewBag.item4 as HotelsInfoViewModel;
+}
+
+<div class="justify-content-center">
+    <div class="row">
+        <div>
+            <h4> 인기있는 나라들! </h4>
+        </div>
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@item1?.photo1" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@item1?.country</h5>
+                        <p class="card-text">
+                            @item1?.hotel_name - @item1?.star_rating - @item1?.rating_average
+                        </p>
+                        <p class="card-text">
+                            <form method="get">
+                                @Html.ActionLink("예약하기", "CreateReservationHotel", "Hotel", new { hotelId = item1.hotel_id }, new { @class = "btn btn-primary" })
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        &nbsp;
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@item2?.photo1" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@item2?.country</h5>
+                        <p class="card-text">
+                            @item2?.hotel_name - @item2?.star_rating - @item2?.rating_average
+                        </p>
+                        <p class="card-text">
+                            <form method="get">
+                                @Html.ActionLink("예약하기", "CreateReservationHotel", "Hotel", new { hotelId = item2.hotel_id }, new { @class = "btn btn-primary" })
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        &nbsp;
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@item3?.photo1" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@item3?.country</h5>
+                        <p class="card-text">
+                            @item3?.hotel_name - @item3?.star_rating - @item3?.rating_average
+                        </p>
+                        <p class="card-text">
+                            <form method="get">
+                                @Html.ActionLink("예약하기", "CreateReservationHotel", "Hotel", new { hotelId = item3.hotel_id }, new { @class = "btn btn-primary" })
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        &nbsp;
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="@item4?.photo1" class="img-fluid rounded-start">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@item4?.country</h5>
+                        <p class="card-text">
+                            @item4?.hotel_name - @item4?.star_rating - @item4?.rating_average
+                        </p>
+                        <p class="card-text">
+                            <form method="get">
+                                @Html.ActionLink("예약하기", "CreateReservationHotel", "Hotel", new { hotelId = item4.hotel_id }, new { @class = "btn btn-primary" })
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

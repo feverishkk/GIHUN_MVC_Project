@@ -1,0 +1,98 @@
+﻿@{
+    int buttons = 5;
+}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+
+        @for (int i = 0; i < buttons; i++)
+        {
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@i" class="active" aria-current="true" aria-label="Slide @i"></button>
+        }
+    </div>
+    <div class="carousel-inner" style="width:1200px;height:700px;">
+        <div class="carousel-item active">
+            <img src="~/imagesForCarousel/France.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="~/imagesForCarousel/italy.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="~/imagesForCarousel/las-vegas-.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="~/imagesForCarousel/london.jpg" class="d-block w-100">
+        </div>
+        <div class="carousel-item">
+            <img src="~/imagesForCarousel/switzerland.jpg" class="d-block w-100">
+        </div>
+        <div class="m-lg-5">
+            <div class="carousel-item active m-5">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 m-5">
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs" id="tab-list" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#description" role="tab" aria-controls="description" aria-selected="true">Book</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#flight" role="tab" aria-controls="flight" aria-selected="false">Flight</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#deals" role="tab" aria-controls="deals" aria-selected="false">Hotels</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">여기에서 여행하세요!</h4>
+                            <h6 class="card-subtitle mb-2">지금 바로 예약하세요!</h6>
+
+                            <div class="tab-content mt-3">
+                                <div class="tab-pane active" id="description" role="tabpanel">
+                                    <p class="card-text">
+                                        It is the seventh most populous city in Italy, at the heart of a metropolitan area of about one million people.
+                                    </p>
+
+                                </div>
+
+                                <div class="tab-pane" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+                                    <p class="card-text">
+                                        First settled around 1000 BCE and then founded as the Etruscan Felsina about 500 BCE, it was occupied by the Boii in the 4th century BCE and became a Roman colony and municipium with the name of Bononia in 196 BCE.
+                                    </p>
+                                    <a href="#" class="card-link text-danger">예매하기</a>
+                                </div>
+
+                                <div class="tab-pane" id="deals" role="tabpanel" aria-labelledby="deals-tab">
+                                    <p class="card-text">
+                                        원하는 국가의 호텔을 검색해보세요!
+
+                                        <form method="post" asp-action="SearchHotelByCountry" asp-controller="Hotel" asp-route-country="@Model?.SearchString">
+
+                                            <input type="text" name="country" value="@Model?.SearchString" />
+
+                                            <button class="btn btn-danger btn-sm">Search</button>
+
+                                        </form>
+
+                                        <div>
+                                            <a class="btn btn-primary btn-sm" asp-action="GetAllHotels" asp-controller="Hotel"> 모두 보기</a>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<br />

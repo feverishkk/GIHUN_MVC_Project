@@ -1,0 +1,38 @@
+﻿@using GIHUN_MVC_Project.ViewModels.Search
+
+@model SearchViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div style="height:300px;">
+    <div class="container">
+        <div class="row">
+            <!-- 메인페이지 -->
+            <div>
+                @Html.Partial("~/Views/PartialViews/_HotelMainImagePartialView.cshtml", Model)
+            </div>
+            
+            <br /> <br /> <br />
+            <hr />
+
+            <div>
+                @Html.Partial("~/Views/PartialViews/_HotelHotDealEventpage.cshtml")
+            </div>
+
+            <br /> <br /> <br />
+            <hr />
+
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $('#tab-list a').on('click', function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+        })
+    </script>
+
+}

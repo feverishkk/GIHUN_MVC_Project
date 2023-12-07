@@ -1,0 +1,94 @@
+﻿@using GIHUN_MVC_Project.ViewModels.Hotels
+@using Shared.Pagination
+@model IEnumerable<HotelViewModel>
+
+@{
+    ViewData["Title"] = "GetUserLikes";
+    string userEmail = ViewData["email"] as string;
+
+    Pager pager = new Pager();
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+   
+
+}
+
+<h1> @userEmail 님이 즐겨찾은 호텔 목록들</h1>
+<br />
+@if (Model != null)
+{
+    <div>
+        <h4> 즐겨찾기 호텔들 </h4>
+        <hr />
+        <div class="row">
+            <div class="col-8">
+                @foreach (var item in Model)
+                {
+                    <form method="get" asp-action="CreateReservationHotel" asp-controller="Hotel">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <div id="carouselFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img src="@item.photo1" class="d-block w-100">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="@item.photo2" class="d-block w-100">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="@item.photo3" class="d-block w-100">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="@item.photo4" class="d-block w-100">
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img src="@item.photo5" class="d-block w-100">
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselFade" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselFade" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.Hotel_Name</h5>
+                                        <p class="card-text">
+                                            나라 : @item.Hotel_Country <br />
+                                            도시 : @item.Hotel_Location <br />
+                                            지역 평점 : @item.Hotel_Location_Rating <br />
+                                            서비스 평점 :  @item.Hotel_Service_Rating / 5
+                                        </p>
+                                        <p class="card-text"><small class="text-muted"> 주소 :@item.Hotel_Address - @item.Hotel_PostCode </small></p>
+
+                                        <input type="hidden" name="hotelId" value="@item.Hotel_Id" asp-for="@item.Hotel_Id" />
+                                        <button type="submit" class="btn btn-success btn-sm"> 예약하러 가기 </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <br />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>
+
+@Html.Partial("~/Views/PartialViews/_PagerPartialView.cshtml", pager)

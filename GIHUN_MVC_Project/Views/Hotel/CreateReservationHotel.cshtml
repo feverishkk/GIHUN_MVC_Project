@@ -1,0 +1,122 @@
+﻿@model GIHUN_MVC_Project.ViewModels.Hotels.HotelsInfoViewModel
+
+@{
+    ViewData["Title"] = "Test";
+}
+
+<h1>호텔 예약하기</h1>
+
+<hr />
+
+<form asp-action="CreateReservationHotel" asp-controller="Hotel" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="d-flex ">
+
+        <div class="col-sm-7">
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.UserInfo.Last_Name" class="control-label"></label>
+                <input asp-for="ReservationHotel.UserInfo.Last_Name" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.UserInfo.Last_Name"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.UserInfo.Last_Name)" value="ReservationHotel.User.Last_Name" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.UserInfo.First_Name" class="control-label"></label>
+                <input asp-for="ReservationHotel.UserInfo.First_Name" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.UserInfo.First_Name"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.UserInfo.First_Name)" value="ReservationHotel.User.First_Name" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.UserInfo.Email" class="control-label"></label>
+                <input asp-for="ReservationHotel.UserInfo.Email" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.UserInfo.Email"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.UserInfo.Email)" value="ReservationHotel.User.Email" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.UserInfo.Mobile" class="control-label"></label>
+                <input asp-for="ReservationHotel.UserInfo.Mobile" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.UserInfo.Mobile"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.UserInfo.Mobile)" value="ReservationHotel.User.Mobile" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.ReservationHotel.Adults" class="control-label"></label>
+                <input asp-for="ReservationHotel.ReservationHotel.Adults" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.ReservationHotel.Adults"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.ReservationHotel.Adults)" value="ReservationHotel.User.Adults" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.ReservationHotel.Children" class="control-label"></label>
+                <input asp-for="ReservationHotel.ReservationHotel.Children" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.ReservationHotel.Children"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.ReservationHotel.Children)" value="ReservationHotel.User.Children" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.ReservationHotel.Infants" class="control-label"></label>
+                <input asp-for="ReservationHotel.ReservationHotel.Infants" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.ReservationHotel.Infants"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.ReservationHotel.Infants)" value="ReservationHotel.User.Last_Name" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.ReservationHotel.Pets" class="control-label"></label>
+                <input asp-for="ReservationHotel.ReservationHotel.Pets" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.ReservationHotel.Pets"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.ReservationHotel.Pets)" value="ReservationHotel.User.Last_Name" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.ReservationHotel.StayDays" class="control-label"></label>
+                <input asp-for="ReservationHotel.ReservationHotel.StayDays" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.ReservationHotel.StayDays"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.ReservationHotel.StayDays)" value="ReservationHotel.User.Last_Name" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.ReservationHotel.Check_In" class="control-label"></label>
+                <input asp-for="ReservationHotel.ReservationHotel.Check_In" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.ReservationHotel.Check_In"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.ReservationHotel.StayDays)" value="ReservationHotel.User.Last_Name" />
+            </div>
+
+            <div class="col-md-4 form-group">
+                <label asp-for="ReservationHotel.ReservationHotel.Check_Out" class="control-label"></label>
+                <input asp-for="ReservationHotel.ReservationHotel.Check_Out" class="form-control" required />
+                <span asp-validation-for="@Model.ReservationHotel.ReservationHotel.Check_Out"></span>
+                <input type="hidden" name="@Html.NameFor(x=>Model.ReservationHotel.ReservationHotel.StayDays)" value="ReservationHotel.User.Last_Name" />
+            </div>
+
+            @Html.HiddenFor(x => Model.hotel_name)
+            @Html.HiddenFor(x => Model.star_rating)
+            @Html.HiddenFor(x => Model.country)
+            @Html.HiddenFor(x => Model.rating_average)
+            @Html.HiddenFor(x => Model.city)
+            @Html.HiddenFor(x => Model.addressline1)
+            @Html.HiddenFor(x => Model.zipcode)
+
+            <div class="form-group">
+                <button type="submit" asp-action="CreateReservationHotel" asp-controller="Hotel" class="btn btn-primary mt-2">Let's Booking!</button>
+            </div>
+
+        </div>
+
+        <!--호텔 정보 -->
+        <div class="justify-content-center">
+            @Html.Partial("~/Views/PartialViews/_HotelInfoPartialView.cshtml", Model)
+        </div>
+    </div>
+
+</form>
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
